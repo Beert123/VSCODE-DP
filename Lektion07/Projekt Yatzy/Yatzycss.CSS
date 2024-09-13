@@ -4,3 +4,9 @@
     background-color: white;
     width: 5;
 }
+.terning{
+    background-color: white;
+    border-collapse:  collapse;
+    border: 1px solid blue;
+    padding: 20px;
+}

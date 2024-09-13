@@ -7,13 +7,13 @@
     </head>
     <body>
         <div class = "terningContainer"> 
-            <div class = terning> 1</div>
-            <div class = terning> 2</div>
-            <div class = terning> 3</div>
-            <div class = terning> 4</div>
-            <div class = terning> 5</div>
+            <div id="t1" class = "terning" onclick="holdDice()"> 1</div>
+            <div id="t2" class = "terning" onclick="holdDice()"> 2</div>
+            <div id="t3" class = "terning" onclick="holdDice()"> 3</div>
+            <div id="t4" class = "terning" onclick="holdDice()"> 4</div>
+            <div id="t5" class = "terning" onclick="holdDice()"> 5</div>
         </div>
-    <button id="Roll"> 
+    <button id="Roll" onclick="rollAndShow()"> 
     Roll </button>
         <table>
             <tr><td>1-s</td><td><input id="ones" type="number" value="0" readonly></td></tr>

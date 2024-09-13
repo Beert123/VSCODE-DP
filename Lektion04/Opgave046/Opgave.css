@@ -1,0 +1,10 @@
+#grid-container{
+    border:2px solid blue;
+    border-collapse: collapse;
+}
+#grid-item{
+   border:2px solid blue;
+}
+#item-header{
+    border:2px solid blue;
+}

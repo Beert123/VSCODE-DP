@@ -1,12 +1,11 @@
 .terningContainer{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    background-color: white;
     width: 5;
 }
 .terning{
     background-color: white;
-    border-collapse:  collapse;
-    border: 1px solid blue;
+    border: 1px solid black;
+    text-align: center;
     padding: 20px;
 }

@@ -1,6 +1,7 @@
 let diceValues = [1, 1, 1, 1, 1]
 let holdValues = [false, false, false, false, false]
 
+export 
 function rollDice() {
 
     for(i = 0; i < diceValues.length; i++) {

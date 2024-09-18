@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import {fourOfAKind, onePair, smallStraightScore} from '../ResultatLogik.js';
+import {chanceScore, fourOfAKind, fullHouse, LargeStraightScore, onePair, smallStraightScore, yatzyScore} from '../ResultatLogik.js';
 import { describe } from "mocha";
 
 describe('All results', () => {
@@ -19,7 +19,22 @@ it('SmallStraightScore', () => {
 })
 
 it('LargeStraightScore', () => {
-    let result = smallStraightScore([1, 1, 0, 1, 1, 1])
+    let result = LargeStraightScore([1, 1, 0, 1, 1, 1])
     assert.equal(result, 0)
+})
+
+it('FullHouse', () => {
+    let result = fullHouse([0, 2, 0, 0, 3, 0])
+    assert.equal(result, 19)
+})
+
+it('ChanceScore', () => {
+    let result = chanceScore([0, 1, 0, 1, 2, 1])
+    assert.equal(result, 22)
+})
+
+it('YatzyScore', () => {
+    let result = yatzyScore([0, 0, 0, 5, 0, 0])
+    assert.equal(result, 50)
 })
 })

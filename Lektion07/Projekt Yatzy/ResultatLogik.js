@@ -45,3 +45,37 @@ if (uniqueValuesCount == 5) {
         return 0;
     }
 }
+
+export
+function fullHouse(dice){
+    for (let i = 0; i < dice.length; i++) {
+        if (dice[i] == 3) {
+            for (let j = 0; j < dice.length; j++) {
+                if (j != i && dice[j] == 2) {
+                    return (i + 1) * 3 + (j + 1) * 2;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+export
+function chanceScore(dice) {
+    let chanceScore = 0;
+
+    for (let i = 0; i < dice.length; i++) {
+        chanceScore += (i + 1) * dice[i];
+    }
+    return chanceScore;
+}
+
+export
+function yatzyScore(dice) {
+    for (let i = 0; i < dice.length; i++) {
+        if (dice[i] == 5) {
+            return 50;
+        }
+    }
+    return 0;
+}

@@ -180,8 +180,4 @@ function yatzyScore() {
     }
     return 0;
 }
-function updateEndRound(){
-    diceRolls=3
-
-}
 

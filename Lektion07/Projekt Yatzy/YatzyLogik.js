@@ -1,5 +1,7 @@
-let diceValues = [1, 1, 1, 1, 1]
+let diceValues = [1,1,1,1,1]
 let holdValues = [false, false, false, false, false]
+
+
 
 function rollDice() {
 
@@ -9,7 +11,6 @@ function rollDice() {
         diceValues[i] = roll
         }
     }
-    antalKast = 0
 }
 
 function showDice() {

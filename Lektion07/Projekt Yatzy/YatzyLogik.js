@@ -45,13 +45,15 @@ function hold(){
 }
 hold();
 
-antalKast = 0
+antalKast = 3
 function antalKast(){
-    if(!antalKast == 3){
-        antalKast++;
-
-    }else if(antalKast == 3){
-
-        antalKast = 0
+    while(antalKast!= 0){
+        let kast = document.getElementById('antalKast')
+        button.addEventListener('click', function(){
+            kast()
+        })
     }
+}
+function kast(){
+
 }

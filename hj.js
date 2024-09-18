@@ -1,5 +1,5 @@
     //calculater
-}
+
 function endRound(){
     let dice =null
     dice = YatzyResultCalculator()

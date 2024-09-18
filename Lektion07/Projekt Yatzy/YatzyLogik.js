@@ -1,13 +1,16 @@
 let diceValues = [1, 1, 1, 1, 1]
 let holdValues = [false, false, false, false, false]
+let antalKast = 0
 
 function rollDice() {
+
     for(i = 0; i < diceValues.length; i++) {
         if(holdValues[i] == false){
         let roll = Math.floor(Math.random()*6) +1
         diceValues[i] = roll
         }
-    } 
+    }
+    antalKast = 0
 }
 
 function showDice() {
@@ -45,15 +48,22 @@ function hold(){
 }
 hold();
 
-antalKast = 3
 function antalKast(){
-    while(antalKast!= 0){
-        let kast = document.getElementById('antalKast')
-        button.addEventListener('click', function(){
-            kast()
+    if(antalKast != 0){
+    button.addEventListener('click', function(){
+        kast(antalKast)
         })
     }
+    else if(antalKast == 0){
+        button.disabled = true
+    }
 }
-function kast(){
 
+function kast(antalKast){
+    if(antalKast == 0){
+        document.getElementById('antalKast').value = antalKast
+        button.backgroundColor('red')
+    }
+    antalKast--;
 }
+antalKast()

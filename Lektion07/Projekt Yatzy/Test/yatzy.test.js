@@ -1,9 +1,10 @@
 import { assert } from "chai";
-import {rollDice} from '../YatzyLogik.js';
+import {onePair} from '../ResultatLogik.js';
 import { describe } from "mocha";
 
-describe('When total 1s', () => {
+describe('When onePair is', () => {
 it('Should return', () => {
-    rollDice()
+    let result = onePair([1, 1, 1, 5, 6])
+    assert.equal(result, 2)
 })
 })

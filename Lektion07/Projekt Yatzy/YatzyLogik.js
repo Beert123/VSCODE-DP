@@ -28,11 +28,13 @@ let kastLabel = document.getElementById('antalKast')
 let button = document.querySelector('button')
 
 
+
 function holdDice(index) {
+
     holdValues[index] = !holdValues[index]
     let diceElement = document.getElementById('t' + (index + 1));
     if(holdValues[index]){
-        diceElement.style.backgroundColor = "blue"
+        diceElement.style.backgroundColor = "red"
     } else {
         diceElement.style.backgroundColor = "white"
     }
@@ -47,16 +49,22 @@ function hold(){
 }
 hold();
 
+let kastTilbage = 3
 function antalKast(){
-    if(antalKast != 0){
+    if(kastTilbage != 0){
     button.addEventListener('click', function(){
-        kast(antalKast)
+        kast()
         })
-    }
-    else if(antalKast == 0){
-        button.disabled = true
     }
 }
 function kast(){
-
+    if(kastTilbage == 1){
+        button.disabled = true
+    }else{
+    kastTilbage--;
+    document.getElementById('antalKast').innerText = kastTilbage
+    button.backgroundColor('red')
+    }
 }
+antalKast();
+    

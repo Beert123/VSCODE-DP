@@ -48,7 +48,7 @@ td {
 }
 
 .holdDice{
-    border: 1px solid blue;
+    border: 1px solid rgb(94, 197, 232);
 }
 
 input[type="number"] {

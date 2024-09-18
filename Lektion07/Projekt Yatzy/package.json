@@ -2,6 +2,7 @@
   "name": "projekt-yatzy",
   "version": "1.0.0",
   "main": "YatzyLogik.js",
+  "type": "module",
   "scripts": {
     "test": "mocha 'test/*.test.js'"
   },

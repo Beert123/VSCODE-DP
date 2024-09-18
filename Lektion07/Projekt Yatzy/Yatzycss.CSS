@@ -3,17 +3,59 @@
     grid-template-columns: auto auto auto auto auto;
     width: 5;
 }
+.container {
+    background-color: #ffffe0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} 
 .terning{
-    background-color: white;
+    background-color: #ffffe0;
     border: 1px solid black;
     text-align: center;
     padding: 20px;
+    margin-bottom: 20px;
 }
 button {
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 300px;
+}
+
+td {
+    padding: 5px;
+    text-align: left;
+}
+
 .holdDice{
     border: 1px solid blue;
+}
+
+input[type="number"] {
+    width: 50px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7c1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

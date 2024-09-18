@@ -64,10 +64,10 @@ function antalKast(){
 function kast(){
     if(kastTilbage == 1){
         button.disabled = true
-    }else{
+    }
+    if (kastTilbage >= 0){
     kastTilbage--;
     document.getElementById('antalKast').innerText = kastTilbage
-    button.backgroundColor('red')
     }
 }
 antalKast();

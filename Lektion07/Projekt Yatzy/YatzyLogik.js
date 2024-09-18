@@ -1,11 +1,12 @@
-import { ones, twos, threes, fours, fives, sixes, onePair, twoPairs, threeSame, fourSame, fullHouse, smallStraight,largeStraight, chance, yatzy } from './ResultatLogik.js';
+//import { ones, twos, threes, fours, fives, sixes, onePair, twoPairs, threeSame, fourSame, fullHouse, smallStraight,largeStraight, chance, yatzy } from './ResultatLogik.js';
 let diceValues = [1,1,1,1,1]
 let holdValues = [false, false, false, false, false]
 let rollCount = 3;
 let værdiTyper = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
-//ruller terningerne og giver dem nye tilfældige værdier
+
+
 function rollDice() {
-    for (i = 0; i < diceValues.length; i++) {
+    for (let i = 0; i < diceValues.length; i++) {
         if (holdValues[i] === false) {
             let roll = Math.floor(Math.random() * 6) + 1;
             diceValues[i] = roll;
@@ -14,30 +15,30 @@ function rollDice() {
     rollCount--;
     updateRollCountDisplay();
     updateScore();
-    checkRollButtonState(); // Opdater knapens tilstand
+    checkRollButtonState();
 }
 
-//opdaterer variablerne i html
+
 function showDice() {
-    for (i = 0; i < diceValues.length; i++) {
+    for (let i = 0; i < diceValues.length; i++) {
         diceElement = document.getElementById('t' + (i +1));
         diceElement.textContent = diceValues[i];
       }  
 }
-//metodekald for "Roll" knappen
+
 function rollAndShow() {
         if (rollCount > 0) {
             rollDice();
             showDice();
         }
-        checkRollButtonState(); // Opdater knapens tilstand
+        checkRollButtonState();
     }
 
 function updateVærdiType(i) {
-    værdiTyper[i] = true; // Marker denne type som valgt
+    værdiTyper[i] = true; 
 }
     
-//updaterer labelen i html
+
 function updateRollCountDisplay() {
     let kastLabel = document.getElementById('antalKast');
     kastLabel.textContent = rollCount;
@@ -50,8 +51,7 @@ function checkRollButtonState() {
         rollButton.disabled = false;
     }
     }
-//resetter game når den rollcount bliver 0
-//TODO tror vi skal sørge for at den først kan resette efter der er blevet valgt en type værdi
+
 function resetGame() {
     diceValues = [0, 0, 0, 0, 0];
     holdValues = [false, false, false, false, false];
@@ -66,8 +66,7 @@ function resetGame() {
         diceElement.style.backgroundColor = "#ffffe0";
     }
 
-    vælgVærditype(); // Genaktiver event listeners for værdikategorierne
-     // Tjek for at afslutte spillet
+    vælgVærditype(); 
 }
 function checkGameEnd() {
     if (værdiTyper.every(v => v === true)) {
@@ -75,11 +74,11 @@ function checkGameEnd() {
         location.reload();
     }
 }
-//gør det muligt at holde en terning
+
 function holdDice(index) {
     let diceElement = document.getElementById('t' + (index + 1));
     let diceValue = parseInt(diceElement.textContent, 10);
-    if (rollCount > 0 && diceValue !== 0) { // Kun tillad at holde terninger hvis rollCount > 0
+    if (rollCount > 0 && diceValue !== 0) { 
         holdValues[index] = true;
         diceElement.style.backgroundColor = holdValues[index] ? "lightgray" : "white";
     }
@@ -87,14 +86,14 @@ function holdDice(index) {
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('Roll').addEventListener('click', rollAndShow);
 
-    // Add event listeners for dice clicks
+  
     for (let i = 0; i < diceValues.length; i++) {
         document.getElementById('t' + (i + 1)).addEventListener('click', function() {
             holdDice(i);
         });
     }
 
-    vælgVærditype(); // Add event listeners for score selection
+    vælgVærditype(); 
 });
 
 function vælgVærditype(){
@@ -102,7 +101,7 @@ function vælgVærditype(){
     inputFields.forEach((input, i) => {
         if (!værdiTyper[i]) {
             input.style.cursor = "pointer";
-            input.disabled = false; // Gør inputfelterne klikbare
+            input.disabled = false; 
             input.addEventListener('click', function() {
                 if (!værdiTyper[i]) {
                     updateVærdiType(i);
@@ -120,7 +119,7 @@ function vælgVærditype(){
 function removeValueTypeListeners() {
     let inputFields = document.querySelectorAll('table input[type="number"]');
     inputFields.forEach((input) => {
-        // Fjern event listeners
+
         let newInput = document.createElement('input');
         newInput.type = 'number';
         newInput.className = input.className;
@@ -130,15 +129,15 @@ function removeValueTypeListeners() {
     });
 }
 function valueTypeClickHandler(index) {
-    if (!værdiTyper[index]) { // Hvis ikke allerede valgt
+    if (!værdiTyper[index]) {
         updateVærdiType(index);
         let input = document.querySelectorAll('table input[type="number"]')[index];
-        input.style.backgroundColor = "lightgray"; // Gør det tydeligt, at den er låst
-        resetGame(); // Genstart spillet efter en værditype er valgt
+        input.style.backgroundColor = "lightgray";
+        resetGame();
     }
 }
 
-//viser scoren for de forskellige mulige scorere
+
 function updateScore() {
     let counts = [0, 0, 0, 0, 0, 0];
     for (let i = 0; i < diceValues.length; i++) {
@@ -162,13 +161,131 @@ function updateScore() {
     calculateSumTotalBonus();
     setTimeout(checkGameEnd, 0);
 }
-document.getElementById('Roll').addEventListener('click', rollAndShow);
-
-for (let i = 0; i < diceValues.length; i++) {
-    document.getElementById('t' + (i + 1)).addEventListener('click', function() {
-        holdDice(i);
-    });
+function ones(counts){
+    let score = counts[0] * 1;
+    return score;
 }
+    
+function twos(counts){
+    let score = counts[1] * 2;
+    return score;
+}
+function threes(counts){
+    let score = counts[2] * 3;
+    return score;
+}
+function fours(counts){
+    let score = counts[3] * 4;
+    return score;
+}
+function fives(counts){
+    let score = counts[4] * 5;
+    return score;
+}
+function sixes(counts){
+    let score = counts[5] * 6;
+    return score;
+}
+
+
+
+ function onePair(dice){
+    for (let i = 5; i >= 0; i--) {
+        if(dice[i]>=2){
+            return (i+1)*2;}
+    }
+        return 0
+}
+    
+ function twoPairs(dice) {
+        let pairCount = 0;
+        let score = 0;
+        for (let i = 5; i >= 0; i--) {
+            if (dice[i] >= 2) {
+                pairCount++;
+                score += (i + 1) * 2;
+            }
+        }
+        if (pairCount == 2) {
+            return score;
+        }
+        return 0;
+    }
+    
+     function threeSame(dice) {
+        for (let i = 5; i >= 0; i--) {
+            if (dice[i] >= 3) {
+                return (i + 1) * 3;
+            }
+        }
+        return 0;
+    }
+     function fourSame(dice){
+        for (let i = 5; i >= 0; i--) {
+        if(dice[i]>=4){
+            return (i+1)*4;}
+    }
+    return 0
+    }
+
+     function fullHouse(dice){
+        for (let i = 0; i < dice.length; i++) {
+            if (dice[i] == 3) {
+                for (let j = 0; j < dice.length; j++) {
+                    if (j != i && dice[j] == 2) {
+                        return (i + 1) * 3 + (j + 1) * 2;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    function smallStraight(dice){
+        let uniqueValuesCount = 0;
+        for (let i = 0; i < 5; i++){
+            if (i >= 0 && i <= 4 && dice[i] > 0) {
+                uniqueValuesCount++;
+            }
+        }
+    if(uniqueValuesCount==5){
+        return 15
+    }else{
+        return 0
+    }
+    }
+    
+    function largeStraight(dice){
+        let uniqueValuesCount = 0;
+        for (let i = 1; i <= 5; i++) {
+            if (dice[i] > 0) {
+                uniqueValuesCount++;
+            }
+        }
+    if (uniqueValuesCount == 5) {
+            return 20;
+        } else {
+            return 0;
+        }
+    }
+
+    function chance(dice) {
+        let chanceScore = 0;
+    
+        for (let i = 0; i < dice.length; i++) {
+            chanceScore += (i + 1) * dice[i];
+        }
+        return chanceScore;
+    }
+
+    function yatzy(dice) {
+        for (let i = 0; i < dice.length; i++) {
+            if (dice[i] == 5) {
+                return 50;
+            }
+        }
+        return 0;
+    }
 
     function calculateSumTotalBonus(){
         let inputFields = document.querySelectorAll('table input[type="number"]');
@@ -187,7 +304,6 @@ for (let i = 0; i < diceValues.length; i++) {
     document.getElementById('total').value = total;
     }
 
-    export { ones, twos, threes, fours, fives, sixes, onePair, twoPairs, threeSame, fourSame, fullHouse, smallStraight, largeStraight, yatzy };
 
 
 

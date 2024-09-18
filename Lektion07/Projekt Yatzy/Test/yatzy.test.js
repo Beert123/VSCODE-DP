@@ -1,5 +1,5 @@
-import { describe } from 'mocha';
-import { assert } from 'chai';
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
 import { ones, twos, threes, fours, fives, sixes, onePair, twoPairs, threeSame, fourSame, fullHouse, smallStraight, largeStraight, yatzy } from '../YatzyLogik.js';
 
 describe('Yatzy spil', () => {

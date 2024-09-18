@@ -1,5 +1,6 @@
 let diceValues = [1,1,1,1,1]
 let holdValues = [false, false, false, false, false]
+let rollCount = 3;
 
 function rollDice() {
     for(i = 0; i < diceValues.length; i++) {
@@ -8,6 +9,9 @@ function rollDice() {
         diceValues[i] = roll
         }
     }
+    rollCount--;
+    updateRollCountDisplay();
+    updateScore();
 }
 
 function showDice() {
@@ -16,59 +20,63 @@ function showDice() {
         diceElement.textContent = diceValues[i];
       }  
 }
-function updateRollCount(){
-    diceRolls--;
-}
 
 function rollAndShow() {
+    if(rollCount === 0) {
+        setTimeout(resetGame, 100)
+    }
     rollDice()
     showDice()
 }
 
-let kastLabel = document.getElementById('antalKast')
-let button = document.querySelector('button')
+function updateRollCountDisplay() {
+    let kastLabel = document.getElementById('antalKast');
+    kastLabel.textContent = rollCount;
+}
 
-
+function resetGame() {
+    diceValues = [0, 0, 0, 0, 0];
+    holdValues = [false, false, false, false, false];
+    rollCount = 3;
+    updateRollCountDisplay();
+    showDice();
+    updateScore();
+    rollCount = 3;
+        for (let i = 0; i < diceValues.length; i++) {
+    let diceElement = document.getElementById('t' + (i + 1));
+    diceElement.style.backgroundColor = "#ffffe0";   
+    }
+}
 
 function holdDice(index) {
-
-    holdValues[index] = !holdValues[index]
+    holdValues[index] = !holdValues[index];
     let diceElement = document.getElementById('t' + (index + 1));
-    if(holdValues[index]){
-        diceElement.style.backgroundColor = "red"
-    } else {
-        diceElement.style.backgroundColor = "white"
-    }
+    diceElement.style.backgroundColor = holdValues[index] ? "blue" : "white";
 }
-function hold(){
-    for(let i = 0; i < holdValues.length; i++){
-        let curr = document.getElementById('t' + (i+1))
-        curr.addEventListener('click',function(){
-            holdDice(i)
-        })
-    }
-}
-hold();
 
-let kastTilbage = 3
-function antalKast(){
-    if(kastTilbage != 0){
-    button.addEventListener('click', function(){
-        kast()
-        })
+function updateScore() {
+    let counts = [0, 0, 0, 0, 0, 0];
+    for (let i = 0; i < diceValues.length; i++) {
+        counts[diceValues[i] - 1]++;
     }
+    document.getElementById('ones').value = counts[0] * 1;
+    document.getElementById('twos').value = counts[1] * 2;
+    document.getElementById('threes').value = counts[2] * 3;
+    document.getElementById('fours').value = counts[3] * 4;
+    document.getElementById('fives').value = counts[4] * 5;
+    document.getElementById('sixes').value = counts[5] * 6;
+
+    let sum = counts[0] * 1 + counts[1] * 2 + counts[2] * 3 + counts[3] * 4 + counts[4] * 5 + counts[5] * 6;
+    document.getElementById('sum').value = sum;
+
 }
-function kast(){
-    if(kastTilbage == 1){
-        button.disabled = true
-    }
-    if (kastTilbage >= 0){
-    kastTilbage--;
-    document.getElementById('antalKast').innerText = kastTilbage
-    }
+document.getElementById('Roll').addEventListener('click', rollAndShow);
+
+for (let i = 0; i < diceValues.length; i++) {
+    document.getElementById('t' + (i + 1)).addEventListener('click', function() {
+        holdDice(i);
+    });
 }
-antalKast();
-    
 
     //calculater
 function endRound(){
@@ -105,6 +113,7 @@ function twoPair(dice){
     }
     return 0;
 }
+
 function threeOfAKind(dice){
     for (let i = 5; i >= 0; i--) {
         if(dice[i]>=3){
@@ -149,10 +158,6 @@ function yatzyScore() {
     return 0;
 }
 
-<<<<<<< HEAD
 function showAlertEndGame() {
     alert('Do you want to start a new game?')
 }
-=======
->>>>>>> 0d82f02 (yikes)
-

@@ -1,10 +1,11 @@
+import { onePair } from './ResultatLogik.js';
+console.log(onePair([1, 1, 2, 2, 3]));
 let diceValues = [1,1,1,1,1]
 let holdValues = [false, false, false, false, false]
 
 
 
 function rollDice() {
-
     for(i = 0; i < diceValues.length; i++) {
         if(holdValues[i] == false){
         let roll = Math.floor(Math.random()*6) +1
@@ -93,7 +94,7 @@ function upperSectionScore(eyes, dice){
     return dice[eyes-1] * eyes
 }
 
-import { onePair } from "./ResultatLogik"
+import {onePair} from ".ResultatLogik"
 
 function twoPair(dice){
     let pairCount = 0;
@@ -116,11 +117,6 @@ function threeOfAKind(dice){
 return 0;
 }
 
-import { fourOfAKind } from "./ResultatLogik"
-
-import { smallStraightScore } from "./ResultatLogik"
-
-import { LargeStraightScore } from "./ResultatLogik"
 
 function fullHouse(dice){
     for (let i = 0; i < dice.length; i++) {

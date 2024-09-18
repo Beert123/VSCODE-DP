@@ -1,7 +1,6 @@
 let diceValues = [1, 1, 1, 1, 1]
 let holdValues = [false, false, false, false, false]
 
-export 
 function rollDice() {
 
     for(i = 0; i < diceValues.length; i++) {
@@ -72,6 +71,7 @@ function kast(){
 }
 antalKast();
     
+
     //calculater
 function endRound(){
     if(rollDice=0){
@@ -172,9 +172,5 @@ function yatzyScore() {
         }
     }
     return 0;
-}
-function updateEndRound(){
-    diceRolls=3
-
 }
 

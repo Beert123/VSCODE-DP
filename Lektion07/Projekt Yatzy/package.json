@@ -5,8 +5,11 @@
   "scripts": {
     "test": "mocha 'test/*.test.js'"
   },
-  "author": "",
+  "author": "ksd",
   "license": "ISC",
-  "description": "",
-  "type": "module"
+  "dependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "ts-node": "^10.9.2"
+  }
 }

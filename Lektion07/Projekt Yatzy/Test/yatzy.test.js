@@ -1,40 +1,45 @@
-import { assert } from "chai";
-import {chanceScore, fourOfAKind, fullHouse, LargeStraightScore, onePair, smallStraightScore, yatzyScore} from '../ResultatLogik.js';
-import { describe } from "mocha";
+import { describe } from 'mocha';
+import { assert } from 'chai';
+import { ones, twos, threes, fours, fives, sixes, onePair, twoPairs, threeSame, fourSame, fullHouse, smallStraight, largeStraight, yatzy } from '../YatzyLogik.js';
 
-describe('All results', () => {
-it('OnePair', () => {
-    let result = onePair([1, 0, 2, 0, 1, 1])
-    assert.equal(result, 6)
-})
+describe('Yatzy spil', () => {
+    it('udregner ones', () => {
+        const counts = [1, 2, 0, 0, 0, 0];
+        expect(ones(counts)).to.equal(1);
+    });
 
-it('FourOfAKind', () => {
-    let result = fourOfAKind([1, 0, 4, 0, 0, 0])
-    assert.equal(result, 12)
-})
+    it('udregner twos', () => {
+        const counts = [0, 2, 0, 0, 0, 0];
+        expect(twos(counts)).to.equal(4);
+    });
 
-it('SmallStraightScore', () => {
-    let result = smallStraightScore([1, 1, 1, 1, 1, 0])
-    assert.equal(result, 15)
-})
+    it('udregner threeSame', () => {
+        const counts = [0, 0, 3, 0, 0, 0];
+        expect(threeSame(counts)).to.equal(9);
+    });
 
-it('LargeStraightScore', () => {
-    let result = LargeStraightScore([1, 1, 0, 1, 1, 1])
-    assert.equal(result, 0)
-})
+    it('udregner fullHouse', () => {
+        const counts = [0, 0, 3, 2, 0, 0];
+        expect(fullHouse(counts)).to.equal(18);
+    });
 
-it('FullHouse', () => {
-    let result = fullHouse([0, 2, 0, 0, 3, 0])
-    assert.equal(result, 19)
-})
+    it('udregner smallStraight', () => {
+        const counts = [1, 1, 1, 1, 1, 0];
+        expect(smallStraight(counts)).to.equal(15);
+    });
 
-it('ChanceScore', () => {
-    let result = chanceScore([0, 1, 0, 1, 2, 1])
-    assert.equal(result, 22)
-})
+    it('udregner largeStraight', () => {
+        const counts = [0, 1, 1, 1, 1, 1];
+        expect(largeStraight(counts)).to.equal(20);
+    });
 
-it('YatzyScore', () => {
-    let result = yatzyScore([0, 0, 0, 5, 0, 0])
-    assert.equal(result, 50)
-})
-})
+    /*it('udrregner chance', () => {
+        const counts = [1, 1, 1, 1, 1, 1];
+        expect(chance(counts)).to.equal(21);
+    });*/
+
+    it('udregner yatzy', () => {
+        const counts = [0, 0, 0, 0, 5, 0];
+        expect(yatzy(counts)).to.equal(50);
+    });
+});

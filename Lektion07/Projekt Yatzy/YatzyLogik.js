@@ -1,10 +1,7 @@
 let diceValues = [1,1,1,1,1]
 let holdValues = [false, false, false, false, false]
 
-
-
 function rollDice() {
-
     for(i = 0; i < diceValues.length; i++) {
         if(holdValues[i] == false){
         let roll = Math.floor(Math.random()*6) +1
@@ -152,7 +149,10 @@ function yatzyScore() {
     return 0;
 }
 
+<<<<<<< HEAD
 function showAlertEndGame() {
     alert('Do you want to start a new game?')
 }
+=======
+>>>>>>> 0d82f02 (yikes)
 

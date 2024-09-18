@@ -78,9 +78,6 @@ function endRound(){
     let dice = null
     dice = YatzyResultCalculator()
     updateEndRound()}
-
-
-
 }
 
 function YatzyResultCalculator() {
@@ -94,6 +91,8 @@ function YatzyResultCalculator() {
 function upperSectionScore(eyes, dice){
     return dice[eyes-1] * eyes
 }
+
+import { onePair } from "./ResultatLogik"
 
 function twoPair(dice){
     let pairCount = 0;

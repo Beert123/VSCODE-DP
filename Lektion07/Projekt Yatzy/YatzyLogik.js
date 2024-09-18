@@ -149,10 +149,4 @@ function yatzyScore() {
     return 0;
 }
 
-<<<<<<< HEAD
-function showAlertEndGame() {
-    alert('Do you want to start a new game?')
-}
-=======
->>>>>>> 0d82f02 (yikes)
 

@@ -1,5 +1,4 @@
-export
-function onePair(dice){
+export function onePair(dice){
     for (let i = 5; i >= 0; i--) {
         if(dice[i]>=2){
             return (i+1)*2;}
@@ -7,8 +6,7 @@ function onePair(dice){
     return 0
 }
 
-export
-function fourOfAKind(dice){
+export function fourOfAKind(dice){
     for (let i = 5; i >= 0; i--) {
     if(dice[i]>=4){
         return (i+1)*4;}
@@ -16,8 +14,7 @@ function fourOfAKind(dice){
 return 0
 }
 
-export
-function smallStraightScore(dice){
+export function smallStraightScore(dice){
     let uniqueValuesCount = 0;
     for (let i = 0; i < 5; i++){
         if (i >= 0 && i <= 4 && dice[i] > 0) {
@@ -31,8 +28,7 @@ if(uniqueValuesCount==5){
 }
 }
 
-export
-function LargeStraightScore(dice){
+export function LargeStraightScore(dice){
     let uniqueValuesCount = 0;
     for (let i = 1; i <= 5; i++) {
         if (dice[i] > 0) {
@@ -46,8 +42,7 @@ if (uniqueValuesCount == 5) {
     }
 }
 
-export
-function fullHouse(dice){
+export function fullHouse(dice){
     for (let i = 0; i < dice.length; i++) {
         if (dice[i] == 3) {
             for (let j = 0; j < dice.length; j++) {
@@ -60,8 +55,7 @@ function fullHouse(dice){
     return 0;
 }
 
-export
-function chanceScore(dice) {
+export function chanceScore(dice) {
     let chanceScore = 0;
 
     for (let i = 0; i < dice.length; i++) {
@@ -70,8 +64,7 @@ function chanceScore(dice) {
     return chanceScore;
 }
 
-export
-function yatzyScore(dice) {
+export function yatzyScore(dice) {
     for (let i = 0; i < dice.length; i++) {
         if (dice[i] == 5) {
             return 50;

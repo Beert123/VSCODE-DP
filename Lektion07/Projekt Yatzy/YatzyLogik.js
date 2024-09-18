@@ -68,6 +68,7 @@ function updateScore() {
 
     let sum = counts[0] * 1 + counts[1] * 2 + counts[2] * 3 + counts[3] * 4 + counts[4] * 5 + counts[5] * 6;
     document.getElementById('sum').value = sum;
+    document.getElementById('bonus').value = sum >= 63 ? 50 : 0;
 
 }
 document.getElementById('Roll').addEventListener('click', rollAndShow);
@@ -79,60 +80,60 @@ for (let i = 0; i < diceValues.length; i++) {
 }
 
     //calculater
-function endRound(){
-    if(rollDice=0){
-    let dice = null
-    dice = YatzyResultCalculator()
-    updateEndRound()}
-}
+    function updateEndRound() {
+        dice = YatzyResultCalculator();
 
-function YatzyResultCalculator() {
-    let dice = [0,0,0,0,0,0]
-    for (let i = 0; i < 5; i++) {
-        dice[diceValues - 1]++;
     }
-    return dice;
-}
-
-function upperSectionScore(eyes, dice){
-    return dice[eyes-1] * eyes
-}
-
-import { onePair } from "./ResultatLogik"
-
-function twoPair(dice){
-    let pairCount = 0;
-    let score=0;
-    for (let i = 5; i >= 0; i--) {
-        if(dice[i]>=2){
-            pairCount++;
-            score += (i+1)*2;}
+    
+    function YatzyResultCalculator() {
+        let dice = [0, 0, 0, 0, 0, 0];
+        for (let i = 0; i < 5; i++) {
+            dice[diceValues[i] - 1]++;
+        }
+        return dice;
     }
-    if(pairCount==2){
-        return score
+    
+    function upperSectionScore(eyes, dice) {
+        return dice[eyes - 1] * eyes;
     }
-    return 0;
-}
+    
+    import { onePair } from "./ResultatLogik.js";
+    
+    function twoPair(dice) {
+        let pairCount = 0;
+        let score = 0;
+        for (let i = 5; i >= 0; i--) {
+            if (dice[i] >= 2) {
+                pairCount++;
+                score += (i + 1) * 2;
+            }
+        }
+        if (pairCount == 2) {
+            return score;
+        }
+        return 0;
+    }
+    
+    function threeOfAKind(dice) {
+        for (let i = 5; i >= 0; i--) {
+            if (dice[i] >= 3) {
+                return (i + 1) * 3;
+            }
+        }
+        return 0;
+    }
+    
+import { fourOfAKind } from "./ResultatLogik.js";
 
-function threeOfAKind(dice){
-    for (let i = 5; i >= 0; i--) {
-        if(dice[i]>=3){
-            return (i+1)*3;}
-}
-return 0;
-}
+import { smallStraightScore } from "./ResultatLogik.js";
 
-import { fourOfAKind } from "./ResultatLogik"
+import { LargeStraightScore } from "./ResultatLogik.js";
 
-import { smallStraightScore } from "./ResultatLogik"
+import { fullHouse } from "./ResultatLogik.js";
 
-import { LargeStraightScore } from "./ResultatLogik"
+import { chanceScore } from "./ResultatLogik.js";
 
-import { fullHouse } from "./ResultatLogik";
-
-import { chanceScore } from "./ResultatLogik";
-
-import { yatzyScore } from "./ResultatLogik";
+import { yatzyScore } from "./ResultatLogik.js";
 
 
 

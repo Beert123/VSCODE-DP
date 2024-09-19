@@ -106,7 +106,7 @@ function vælgVærditype(){
                 if (!værdiTyper[i]) {
                     updateVærdiType(i);
                     input.style.backgroundColor = "lightgray";
-                    input.setAttribute('disabled', '')
+                    input.disabled = true
                     resetGame();
                 }
             }, 

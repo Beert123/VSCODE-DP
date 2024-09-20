@@ -116,28 +116,6 @@ function vælgVærditype(){
 }
 
 
-function removeValueTypeListeners() {
-    let inputFields = document.querySelectorAll('table input[type="number"]');
-    inputFields.forEach((input) => {
-
-        let newInput = document.createElement('input');
-        newInput.type = 'number';
-        newInput.className = input.className;
-        newInput.id = input.id;
-        newInput.value = input.value;
-        input.parentNode.replaceChild(newInput, input);
-    });
-}
-function valueTypeClickHandler(index) {
-    if (!værdiTyper[index]) {
-        updateVærdiType(index);
-        let input = document.querySelectorAll('table input[type="number"]')[index];
-        input.style.backgroundColor = "lightgray";
-        resetGame();
-    }
-}
-
-
 function updateScore() {
     let counts = [0, 0, 0, 0, 0, 0];
     for (let i = 0; i < diceValues.length; i++) {

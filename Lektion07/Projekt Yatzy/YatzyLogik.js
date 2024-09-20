@@ -265,23 +265,40 @@ function sixes(counts){
         return 0;
     }
 
-    function calculateSumTotalBonus(){
-        let inputFields = document.querySelectorAll('table input[type="number"]');
-        let sum = 0;
-        let total = 0;
-        for (let i = 0; i <= 5; i++) {
-            if(værdiTyper[i]){
-                sum += parseInt(inputFields[i].value, 10) || 0;}
-        }
-    document.getElementById('sum').value = sum;
-    document.getElementById('bonus').value = sum >= 63 ? 50 : 0;
-    for (let i = 0; i <= 15; i++) {
-        if(værdiTyper[i]){
-            total += parseInt(inputFields[i].value, 10) || 0}
+    //calculater
+function endRound(){
+    if(rollDice=0){
+    let dice = null
+    dice = YatzyResultCalculator()
+    updateEndRound()}
+}
+
+function YatzyResultCalculator() {
+    let dice = [0,0,0,0,0,0]
+    for (let i = 0; i < 5; i++) {
+        dice[diceValues - 1]++;
+    }
+    return dice;
+}
+
+function upperSectionScore(eyes, dice){
+    return dice[eyes-1] * eyes
+}
+
+import { onePair } from "./ResultatLogik"
+
+function twoPair(dice){
+    let pairCount = 0;
+    let score=0;
+    for (let i = 5; i >= 0; i--) {
+        if(dice[i]>=2){
+            pairCount++;
+            score += (i+1)*2;}
     }
     document.getElementById('total').value = total;
     }
 
+    export { ones, twos, threes, fours, fives, sixes, onePair, twoPairs, threeSame, fourSame, fullHouse, smallStraight, largeStraight, yatzy };
 
 
 
